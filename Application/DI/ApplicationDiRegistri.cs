@@ -1,6 +1,7 @@
 ﻿using Application.Command;
 using Application.Interfaces;
 using Application.Service;
+using Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.DI
@@ -12,6 +13,7 @@ namespace Application.DI
             .AddServices();
         private static IServiceCollection AddServices(this IServiceCollection services) =>
         services
-            .AddScoped<ICommand, CreateDatabaseCommand>();
+            .AddScoped<CreateDatabaseCommand>()
+            .AddScoped<IEmployeeService, EmployeeService>();
     }
 }

@@ -8,6 +8,7 @@ namespace Infrastructure.Service
     {
         public async Task CreateDbAsync()
         {
+            Console.WriteLine("ergerdgegrdr6");
             await context.Database.EnsureCreatedAsync();
         }
 

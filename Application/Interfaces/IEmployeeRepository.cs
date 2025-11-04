@@ -7,8 +7,10 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IDbService
+    public interface IEmployeeRepository
     {
-        public Task CreateDbAsync();
+        Task<IEnumerable<Employee>> GetAllAsync();
+        public Task AddEmployee(Employee employee);
+        public Task SaveAsync();
     }
 }

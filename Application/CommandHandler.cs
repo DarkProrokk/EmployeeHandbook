@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Command;
+using Application.Interfaces;
 using Application.Service;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +9,8 @@ namespace Application
     {
         public ICommand GetCommand(string commandKey) => commandKey switch
         {
-            "1" => serviceProvider.GetRequiredService<CreateDatabaseCommand>()
+            "1" => serviceProvider.GetRequiredService<CreateDatabaseCommand>(),
+            "2" => serviceProvider.GetRequiredService<AddRecordCommand>()
         };
     }
 }

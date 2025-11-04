@@ -7,8 +7,8 @@ using Domain.Entities;
 
 namespace Application.Interfaces
 {
-    public interface IDbService
+    public interface IEmployeeService
     {
-        public Task CreateDbAsync();
+        public Task CreateAsync(string fullname, DateOnly birthday, Sex sex);
     }
 }
