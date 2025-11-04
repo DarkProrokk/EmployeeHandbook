@@ -23,8 +23,8 @@ namespace Domain.Entities
         public static Employee CreateEmployee(string fullname, DateOnly birthday, Sex sex)
         {
             if (string.IsNullOrWhiteSpace(fullname)) throw new ArgumentNullException("Fullname can not be empty or null");
-            if (birthday < DateOnly.FromDateTime(DateTime.Now)) throw new ArgumentException("BirthDay date can not be later than creation date");
-            if (birthday > DateOnly.FromDateTime(DateTime.Now.AddYears(-100))) throw new ArgumentException("BirthDay date can not be eairlier than 1925");
+            if (birthday > DateOnly.FromDateTime(DateTime.Now)) throw new ArgumentException("BirthDay date can not be later than creation date");
+            if (birthday <= DateOnly.FromDateTime(DateTime.Now.AddYears(-80))) throw new ArgumentException("BirthDay date can not be eairlier than 1925");
             if (birthday == DateOnly.MinValue) throw new ArgumentException("BirthDay date can not be empty");
             DateTime createdAt = DateTime.Now;
             var guid = System.Guid.NewGuid();

@@ -13,6 +13,7 @@ namespace Infrastructure.Repository
     {
         public async Task AddEmployee(Employee employee)
         {
+            Console.WriteLine("repos");
             await context.Employees.AddAsync(employee); 
         }
 

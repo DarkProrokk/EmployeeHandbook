@@ -12,8 +12,9 @@ namespace Application.Services
     {
         public async Task CreateAsync(string fullname, DateOnly birthday, Sex sex)
         {
+            
             var employee = Employee.CreateEmployee(fullname, birthday, sex);
-
+            Console.WriteLine("service");
             await repository.AddEmployee(employee);
             await repository.SaveAsync();
         }

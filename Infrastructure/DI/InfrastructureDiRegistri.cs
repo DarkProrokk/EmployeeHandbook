@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Application.Interfaces;
 using Infrastructure.Service;
 using Infrastructure.Repository;
+using Application.Services;
 namespace Infrastructure.DI
 {
     public static class InfrastructureDiRegistri
@@ -26,7 +27,8 @@ namespace Infrastructure.DI
         private static IServiceCollection AddServices(this IServiceCollection services) => 
             services
             .AddScoped<IDbService, DbService>()
-            .AddScoped<IEmployeeRepository,EmployeeRepository>();
+            .AddScoped<IEmployeeRepository,EmployeeRepository>()
+            .AddScoped<IEmployeeService,EmployeeService>();
 
     }
 }
