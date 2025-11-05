@@ -4,12 +4,12 @@ using Domain.Entities;
 
 namespace Application.Command
 {
-    public class AddRecordCommand(IEmployeeService service) : ICommand
+    public class AddRecordCommand(IEmployeeService service, string fullName, DateOnly birthDay, Sex sex) : ICommand
     {
         public async Task Execute()
         {
             //как мы сюда параметры будем передевать
-            await service.CreateAsync("Ivanov Petr Sergeevich" ,new DateOnly(2009,12,01), Sex.Male);
+            await service.CreateAsync(fullName, birthDay, sex);
         }
     }
 }
