@@ -23,9 +23,9 @@ namespace Core
             Console.WriteLine(args[0]);
 
             var commandHandler = new CommandHandler(serviceProvider);
-            var command = commandHandler.GetCommand(args[0], args);
+            var command = commandHandler.GetCommand(args[0]);
 
-            await command.Execute();
+            await command.Execute(args);
         }
     }
 }

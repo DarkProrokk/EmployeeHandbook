@@ -10,5 +10,7 @@ namespace Application.Interfaces
     public interface IEmployeeService
     {
         public Task CreateAsync(string fullname, DateOnly birthday, Sex sex);
+        public Task<IEnumerable<EmployeeDTO>> OutputAllRecordsAsync();
+        public Task<IEnumerable<EmployeeDTO>> OutputRecordsByFilterAsync();
     }
 }

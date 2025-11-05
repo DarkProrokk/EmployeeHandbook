@@ -7,7 +7,7 @@ namespace Application.Service
     public class CreateDatabaseCommand(IDbService service) : ICommand
     {
 
-        public async Task Execute()
+        public async Task Execute(string[] args)
         {
             await service.CreateDbAsync();
         }

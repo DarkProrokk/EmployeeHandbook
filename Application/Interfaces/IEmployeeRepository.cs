@@ -11,6 +11,7 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<Employee>> GetAllAsync();
         public Task AddEmployee(Employee employee);
+        Task<List<Employee>> GetEmployeeMaleWithLastNameStartingWithFAsync();
         public Task SaveAsync();
     }
 }

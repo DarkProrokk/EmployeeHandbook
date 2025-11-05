@@ -1,15 +1,16 @@
-﻿using Application.Interfaces;
-using Domain.Entities;
-
+﻿
+using Application.Interfaces;
+using System.Diagnostics;
 
 namespace Application.Command
 {
-    public class OutputAllRecords(IEmployeeService service) : ICommand
+    public class SelectFromTableByCriterion(IEmployeeService service) : ICommand
     {
         public async Task Execute(string[] args)
         {
-            var employees = await service.OutputAllRecordsAsync();
-            Console.WriteLine("Список сотрудников:");
+            var employees = await service.OutputRecordsByFilterAsync();
+
+            Console.WriteLine("Список сотрудников по критерию: пол мужской, Фамилия начинается с \"F\":");
             Console.WriteLine("ФИО\t\t\tДата рождения\tПол\tВозраст");
             Console.WriteLine(new string('-', 60));
 

@@ -8,6 +8,6 @@ namespace Application.Interfaces
 {
     public interface ICommand
     {
-        public Task Execute();
+        public Task Execute(string[] args);
     }
 }

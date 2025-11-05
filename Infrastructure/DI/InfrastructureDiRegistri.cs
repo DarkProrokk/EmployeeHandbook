@@ -27,8 +27,6 @@ namespace Infrastructure.DI
         private static IServiceCollection AddServices(this IServiceCollection services) => 
             services
             .AddScoped<IDbService, DbService>()
-            .AddScoped<IEmployeeRepository,EmployeeRepository>()
-            .AddScoped<IEmployeeService,EmployeeService>();
-
+            .AddScoped<IEmployeeRepository,EmployeeRepository>();
     }
 }

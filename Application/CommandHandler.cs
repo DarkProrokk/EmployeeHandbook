@@ -9,28 +9,20 @@ namespace Application
 {
     public class CommandHandler(IServiceProvider serviceProvider)
     {
-        public ICommand GetCommand(string commandKey, string[] args)
+        public ICommand GetCommand(string commandKey)
         {
             switch (commandKey)
             {
                 case "1":
                     return serviceProvider.GetRequiredService<CreateDatabaseCommand>();
                 case "2":
-                    var fullName = args[1];
-                    var birthDay = DateOnly.Parse(args[2]);
-                    var sex = Enum.Parse<Sex>(args[3]);
-
-                    var service = serviceProvider.GetRequiredService<IEmployeeService>();
-                    return new AddRecordCommand(service, fullName, birthDay, sex);
+                    return serviceProvider.GetRequiredService<AddRecordCommand>(); ;
                 case "3":
-                    throw new ArgumentException($"Неизвестная команда: {commandKey}");
-                    break;
+                    return serviceProvider.GetRequiredService<OutputAllRecords>();
                 case "4":
-                    throw new ArgumentException($"Неизвестная команда: {commandKey}");
-                    break;
+                    return serviceProvider.GetRequiredService<FillEmployeeTable>();
                 case "5":
-                    throw new ArgumentException($"Неизвестная команда: {commandKey}");
-                    break;
+                    return serviceProvider.GetRequiredService<SelectFromTableByCriterion>();
                 default:
                     throw new ArgumentException($"Неизвестная команда: {commandKey}");
             }
