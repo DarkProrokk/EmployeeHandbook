@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Service
 {
@@ -9,6 +10,7 @@ namespace Infrastructure.Service
         public async Task CreateDbAsync()
         {
             Console.WriteLine("ergerdgegrdr6");
+            Console.WriteLine(context.Database.GetDbConnection().ConnectionString);
             await context.Database.EnsureCreatedAsync();
         }
 

@@ -7,26 +7,29 @@ using Application.Interfaces;
 using Infrastructure.Service;
 using Infrastructure.Repository;
 using Application.Services;
+using Microsoft.EntityFrameworkCore.Design;
+
 namespace Infrastructure.DI
 {
     public static class InfrastructureDiRegistri
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+            IConfiguration configuration)
             => services
-            .AddDatabase(configuration)
-            .AddServices();
+                .AddDatabase(configuration)
+                .AddServices();
+
         private static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
         {
             string? connectionString = configuration.GetConnectionString("Database");
 
-            services.AddDbContext<EmployeeHandbookContext>(
-                options => options.UseSqlServer(connectionString));
-
+            services.AddDbContextFactory<EmployeeHandbookContext>(options => options.UseSqlServer(connectionString));
             return services;
         }
-        private static IServiceCollection AddServices(this IServiceCollection services) => 
+
+        private static IServiceCollection AddServices(this IServiceCollection services) =>
             services
-            .AddScoped<IDbService, DbService>()
-            .AddScoped<IEmployeeRepository,EmployeeRepository>();
+                .AddScoped<IDbService, DbService>()
+                .AddScoped<IEmployeeRepository, EmployeeRepository>();
     }
 }

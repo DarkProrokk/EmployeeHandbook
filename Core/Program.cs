@@ -10,11 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 var configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("Core/appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
-
 string? connectionString = configuration.GetConnectionString("Database");
-
+Console.WriteLine(connectionString);
 var services = new ServiceCollection();
 
 services.AddInfrastructure(configuration);
